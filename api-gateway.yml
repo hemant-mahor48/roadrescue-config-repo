@@ -33,6 +33,10 @@ spring:
           uri: lb://AUTH-SERVICE
           predicates:
             - Path=/api/v1/mechanics/**
+        - id: request-routes
+          uri: lb://REQUEST-SERVICE
+          predicates:
+            - Path=/api/v1/requests/**
 
 jwt:
   secret: ${my.secret.key}
