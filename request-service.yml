@@ -24,6 +24,8 @@ spring:
       retries: 3
     topic:
       breakdown-request-topic: breakdown-requests
+      mechanic-assignment-topic: mechanic-assignments
+      mechanic-rejection-topic: mechanic-rejections
 
 server:
   port: 8082

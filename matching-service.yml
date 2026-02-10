@@ -20,6 +20,8 @@ spring:
     topic:
       breakdown-request-topic: breakdown-requests
       mechanic-notification-topic: mechanic-notifications
+      mechanic-assignment-topic: mechanic-assignments
+      mechanic-rejection-topic: mechanic-rejections
 
 server:
   port: 8084
