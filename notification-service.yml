@@ -9,9 +9,9 @@ spring:
       properties:
         spring.json.trusted.packages: "*"
         spring.json.type.mapping: >
-          breakdownRequest:com.roadrescue.notification_service.dto.BreakdownRequestEvent,
-          mechanicNotification:com.roadrescue.notification_service.dto.MechanicNotificationEvent,
-          mechanicAssignment:com.roadrescue.notification_service.dto.MechanicAssignmentEvent
+          breakdownRequestEvent:com.roadrescue.notification_service.dto.BreakdownRequestEvent,
+          mechanicNotificationEvent:com.roadrescue.notification_service.dto.MechanicNotificationEvent,
+          mechanicAssignmentEvent:com.roadrescue.notification_service.dto.MechanicAssignmentEvent
 
     topic:
       breakdown-request-topic: breakdown-requests
