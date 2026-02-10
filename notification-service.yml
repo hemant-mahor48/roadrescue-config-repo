@@ -1,21 +1,22 @@
-kafka:
-  bootstrap-servers: localhost:9092
-  consumer:
-    group-id: notification-service-group
-    auto-offset-reset: earliest
-    key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-    value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-    properties:
-      spring.json.trusted.packages: "*"
-      spring.json.type.mapping: >
-        breakdownRequest:com.roadrescue.notification_service.dto.BreakdownRequestEvent,
-        mechanicNotification:com.roadrescue.notification_service.dto.MechanicNotificationEvent,
-        mechanicAssignment:com.roadrescue.notification_service.dto.MechanicAssignmentEvent
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: notification-service-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+        spring.json.type.mapping: >
+          breakdownRequest:com.roadrescue.notification_service.dto.BreakdownRequestEvent,
+          mechanicNotification:com.roadrescue.notification_service.dto.MechanicNotificationEvent,
+          mechanicAssignment:com.roadrescue.notification_service.dto.MechanicAssignmentEvent
 
-  topic:
-    breakdown-request-topic: breakdown-requests
-    mechanic-notification-topic: mechanic-notifications
-    mechanic-assignment-topic: mechanic-assignments
+    topic:
+      breakdown-request-topic: breakdown-requests
+      mechanic-notification-topic: mechanic-notifications
+      mechanic-assignment-topic: mechanic-assignments
 
 # Server Configuration
 server:
