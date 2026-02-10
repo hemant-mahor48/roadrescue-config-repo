@@ -19,7 +19,9 @@ spring:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
       properties:
-        spring.json.type.mapping: breakdownRequestEvent:com.roadrescue.request_service.dto.BreakdownRequestEvent
+        spring.json.type.mapping: >
+          breakdownRequestEvent:com.roadrescue.request_service.dto.BreakdownRequestEvent,
+          mechanicAssignment:com.roadrescue.request_service.dto.MechanicAssignmentEvent,
       acks: all
       retries: 3
     topic:

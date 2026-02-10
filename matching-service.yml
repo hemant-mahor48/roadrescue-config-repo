@@ -8,7 +8,9 @@ spring:
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
         spring.json.trusted.packages: "*"
-        spring.json.type.mapping: breakdownRequestEvent:com.roadrescue.matching_service.dto.BreakdownRequestEvent
+        spring.json.type.mapping: >
+          breakdownRequestEvent:com.roadrescue.matching_service.dto.BreakdownRequestEvent,
+          mechanicNotification:com.roadrescue.matching_service.dto.MechanicNotificationEvent
       auto-offset-reset: earliest
 
     producer:
