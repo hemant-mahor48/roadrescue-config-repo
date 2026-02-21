@@ -13,12 +13,11 @@ spring:
           mechanicNotificationEvent:com.roadrescue.notification_service.dto.MechanicNotificationEvent,
           mechanicAssignmentEvent:com.roadrescue.notification_service.dto.MechanicAssignmentEvent,
           locationUpdateEvent:com.roadrescue.notification_service.dto.LocationUpdateEvent
-
-  topic:
-    breakdown-request-topic: breakdown-requests
-    mechanic-notification-topic: mechanic-notifications
-    mechanic-assignment-topic: mechanic-assignments
-    location-updates-topic: location-updates
+    topic:
+      breakdown-request-topic: breakdown-requests
+      mechanic-notification-topic: mechanic-notifications
+      mechanic-assignment-topic: mechanic-assignments
+      location-updates-topic: location-updates
 
 server:
   port: 8086
