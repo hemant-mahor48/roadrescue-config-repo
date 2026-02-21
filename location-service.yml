@@ -15,8 +15,8 @@ spring:
       acks: all
       retries: 3
 
-  topic:
-    location-updates-topic: location-updates
+    topic:
+      location-updates-topic: location-updates
 
 server:
   port: 8083
