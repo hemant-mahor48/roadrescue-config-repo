@@ -8,30 +8,30 @@ spring:
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
         spring.json.trusted.packages: "*"
-        spring.json.type.mapping: breakdownRequestEvent:com.roadrescue.notification_service.dto.BreakdownRequestEvent,mechanicNotificationEvent:com.roadrescue.notification_service.dto.MechanicNotificationEvent,mechanicAssignmentEvent:com.roadrescue.notification_service.dto.MechanicAssignmentEvent
+        spring.json.type.mapping: >
+          breakdownRequestEvent:com.roadrescue.notification_service.dto.BreakdownRequestEvent,
+          mechanicNotificationEvent:com.roadrescue.notification_service.dto.MechanicNotificationEvent,
+          mechanicAssignmentEvent:com.roadrescue.notification_service.dto.MechanicAssignmentEvent,
+          locationUpdateEvent:com.roadrescue.notification_service.dto.LocationUpdateEvent
 
-    topic:
-      breakdown-request-topic: breakdown-requests
-      mechanic-notification-topic: mechanic-notifications
-      mechanic-assignment-topic: mechanic-assignments
+  topic:
+    breakdown-request-topic: breakdown-requests
+    mechanic-notification-topic: mechanic-notifications
+    mechanic-assignment-topic: mechanic-assignments
+    location-updates-topic: location-updates
 
-# Server Configuration
 server:
   port: 8086
 
-# Eureka Client Configuration
 eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka
-    register-with-eureka: true
-    fetch-registry: true
   instance:
     prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
 
-# Logging
 logging:
   level:
     com.roadrescue.notification_service: DEBUG
-    org.springframework.kafka: INFO
-    org.springframework.messaging: DEBUG

@@ -5,6 +5,19 @@ spring:
       port: 6379
       timeout: 60000ms
 
+  kafka:
+    bootstrap-servers: localhost:9093
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.type.mapping: locationUpdateEvent:com.roadrescue.location_service.dto.LocationUpdateEvent
+      acks: all
+      retries: 3
+
+  topic:
+    location-updates-topic: location-updates
+
 server:
   port: 8083
 
@@ -16,3 +29,7 @@ eureka:
     register-with-eureka: true
     service-url:
       defaultZone: http://localhost:8761/eureka/
+
+logging:
+  level:
+    com.roadrescue.location_service: DEBUG
