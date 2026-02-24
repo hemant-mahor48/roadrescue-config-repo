@@ -37,6 +37,14 @@ spring:
           uri: lb://REQUEST-SERVICE
           predicates:
             - Path=/api/v1/requests/**
+        - id: location-routes
+          uri: lb://LOCATION-SERVICE
+          predicates:
+            - Path=/api/v1/location/**
+        - id: notification-routes
+          uri: lb://NOTIFICATION-SERVICE
+          predicates:
+          - Path=/api/v1/notifications/**,/ws/**
 
 jwt:
   secret: ${my.secret.key}
