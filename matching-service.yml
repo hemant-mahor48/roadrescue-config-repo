@@ -41,3 +41,6 @@ logging:
   level:
     com.roadrescue.matching_service: DEBUG
     org.springframework.kafka: INFO
+
+matching:
+  search-radius-km: 10.0
