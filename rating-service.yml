@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/roadrescue_user_db
+    url: jdbc:postgresql://localhost:5435/roadrescue_rating_db
     username: hemant_user
     password: roadrescuePass@48
     driver-class-name: org.postgresql.Driver
@@ -14,19 +14,16 @@ spring:
       format_sql: true
   kafka:
     bootstrap-servers: localhost:9093
-    consumer:
-      group-id: auth-service-group
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
       properties:
-        spring.json.trusted.packages: "*"
-        spring.json.type.mapping: reviewEvent:com.roadrescue.auth_service.dto.ReviewEvent
-      auto-offset-reset: earliest
+        spring.json.type.mapping: reviewEvent:com.roadrescue.rating_service.dto.ReviewEvent
     topic:
       reviews-topic: reviews
 
 server:
-  port: 8081
+  port: 8089
 
 eureka:
   instance:
@@ -37,5 +34,6 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka/
 
-jwt:
-  secret: ${my.secret.key}
+logging:
+  level:
+    com.roadrescue.rating_service: DEBUG

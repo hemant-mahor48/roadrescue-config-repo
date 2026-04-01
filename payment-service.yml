@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5433/roadrescue_request_db
+    url: jdbc:postgresql://localhost:5434/roadrescue_payment_db
     username: hemant_user
     password: roadrescuePass@48
     driver-class-name: org.postgresql.Driver
@@ -14,32 +14,30 @@ spring:
       format_sql: true
   kafka:
     bootstrap-servers: localhost:9093
-
     consumer:
-      group-id: request-service-group
+      group-id: payment-service-group
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
         spring.json.trusted.packages: "*"
-        spring.json.type.mapping: paymentEvent:com.roadrescue.request_service.dto.PaymentEvent
+        spring.json.type.mapping: >
+          serviceCompletionEvent:com.roadrescue.payment_service.dto.ServiceCompletionEvent,
+          mechanicAssignmentEvent:com.roadrescue.payment_service.dto.MechanicAssignmentEvent
       auto-offset-reset: earliest
-
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
       properties:
-        spring.json.type.mapping: breakdownRequestEvent:com.roadrescue.request_service.dto.BreakdownRequestEvent,mechanicAssignmentEvent:com.roadrescue.request_service.dto.MechanicAssignmentEvent,serviceCompletionEvent:com.roadrescue.request_service.dto.ServiceCompletionEvent
+        spring.json.type.mapping: paymentEvent:com.roadrescue.payment_service.dto.PaymentEvent
       acks: all
       retries: 3
     topic:
-      breakdown-request-topic: breakdown-requests
       mechanic-assignment-topic: mechanic-assignments
-      mechanic-rejection-topic: mechanic-rejections
       service-completion-topic: service-completion
       payments-topic: payments
 
 server:
-  port: 8082
+  port: 8087
 
 eureka:
   instance:
@@ -49,3 +47,11 @@ eureka:
     register-with-eureka: true
     service-url:
       defaultZone: http://localhost:8761/eureka/
+
+payments:
+  platform-fee-percent: 10
+  default-deposit-hold: 200
+
+logging:
+  level:
+    com.roadrescue.payment_service: DEBUG

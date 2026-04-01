@@ -12,12 +12,18 @@ spring:
           breakdownRequestEvent:com.roadrescue.notification_service.dto.BreakdownRequestEvent,
           mechanicNotificationEvent:com.roadrescue.notification_service.dto.MechanicNotificationEvent,
           mechanicAssignmentEvent:com.roadrescue.notification_service.dto.MechanicAssignmentEvent,
-          locationUpdateEvent:com.roadrescue.notification_service.dto.LocationUpdateEvent
+          locationUpdateEvent:com.roadrescue.notification_service.dto.LocationUpdateEvent,
+          serviceCompletionEvent:com.roadrescue.notification_service.dto.ServiceCompletionEvent,
+          paymentEvent:com.roadrescue.notification_service.dto.PaymentEvent,
+          reviewEvent:com.roadrescue.notification_service.dto.ReviewEvent
     topic:
       breakdown-request-topic: breakdown-requests
       mechanic-notification-topic: mechanic-notifications
       mechanic-assignment-topic: mechanic-assignments
       location-updates-topic: location-updates
+      service-completion-topic: service-completion
+      payments-topic: payments
+      reviews-topic: reviews
 
 server:
   port: 8086

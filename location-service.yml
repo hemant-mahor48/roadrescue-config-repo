@@ -33,3 +33,9 @@ eureka:
 logging:
   level:
     com.roadrescue.location_service: DEBUG
+
+maps:
+  google:
+    distance-matrix:
+      base-url: https://maps.googleapis.com
+      api-key: ${GOOGLE_DISTANCE_MATRIX_API_KEY:}
